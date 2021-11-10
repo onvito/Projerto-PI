@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import apiGov from "../services/apiGov";
+import apiGov from "../../services/apiGov";
 
 const Deputados = (props) => {
   const [Deputados, setDeputados] = useState([]);

@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { Card, Row, Col, Button, Container } from "react-bootstrap";
-import apiGov from "../services/apiGov";
+import apiGov from "../../services/apiGov";
 import { Link } from "react-router-dom";
 
-const DeputadoDetalhe = (props) => {
-  const [Deputados, setDeputados] = useState([]);
+const PartidoDetalhe = (props) => {
+  const [partidos, setPartidos] = useState([]);
   const [dados, setDados] = useState({});
 
   useEffect(() => {
     const id = props.match.params.id;
 
-   apiGov.get('/deputados').then(resultado => {
-       setDeputados(resultado.data.dados)
+   apiGov.get('/partidos/:id').then(resultado => {
+       setPartidos(resultado.data.dados)
     });
-    apiGov.get(`/deputados/${id}`).then((resultado) => {
+    apiGov.get(`/partidos/${id}`).then((resultado) => {
       setDados(resultado.data.dados);
    });
   }, [props]);
@@ -29,17 +29,15 @@ const DeputadoDetalhe = (props) => {
                 <Card>
                   <Card.Img
                     variant="top"
-                    src={Deputados.urlFoto}
+                    src={partidos.urlLogo}
                   />
                   
                 </Card>
               </Col>
               <Col md={9}>
-                <h2>{dados.nomeCivil}</h2><br />
-                <p>CPF: {dados.cpf}</p>
-                <p>Data de Nascimento: {dados.dataNascimento}</p>
-                <p>Escolaridade: {dados.escolaridade}</p>
-                <p>Local de Nascimento: {dados.municipioNascimento}</p>
+                <h2>{dados.nome}</h2><br />
+                <p>Sigla: {dados.sigla}</p>
+                
                 
          
                 
@@ -47,7 +45,7 @@ const DeputadoDetalhe = (props) => {
               <hr />
               <hr />
             </Row>
-            <Link to={"/deputados"}> 
+            <Link to={"/partidos"}> 
                 <Button className="btn btn-success"> Voltar</Button>  
             </Link>
             <hr />           
@@ -60,4 +58,4 @@ const DeputadoDetalhe = (props) => {
   );
 };
 
-export default DeputadoDetalhe;
+export default PartidoDetalhe;
