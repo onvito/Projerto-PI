@@ -1,11 +1,10 @@
 import axios from 'axios'
 
-const apiGov = axios.create({
+const apiCamara = axios.create({
     baseURL: 'https://dadosabertos.camara.leg.br/api/v2',
     headers: {
-        'content-type': 'application/json;charset=utf-8',
-        'accept': 'application/json',
+        'content-type': 'application/json;charset=utf-8'
     }
 })
 
-export default apiGov
+export default apiCamara
