@@ -4,15 +4,14 @@ import apiGov from "../../services/apiGov";
 import { Link } from "react-router-dom";
 
 const DeputadoDetalhe = (props) => {
-  const [Deputados, setDeputados] = useState([]);
+  
   const [dados, setDados] = useState({});
+  const [status, setStatus] = useState({})
 
   useEffect(() => {
     const id = props.match.params.id;
 
-   apiGov.get('/deputados').then(resultado => {
-       setDeputados(resultado.data.dados)
-    });
+   
     apiGov.get(`/deputados/${id}`).then((resultado) => {
       setDados(resultado.data.dados);
    });
@@ -29,7 +28,7 @@ const DeputadoDetalhe = (props) => {
                 <Card>
                   <Card.Img
                     variant="top"
-                    src={Deputados.urlFoto}
+                    src={dados.urlFoto}
                   />
                   
                 </Card>
