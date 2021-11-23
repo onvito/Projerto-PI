@@ -1,7 +1,5 @@
-import Button from "@restart/ui/esm/Button";
 import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import Box from "../../components/Box";
 
 import apiGov from "../../services/apiGov";
@@ -37,9 +35,7 @@ return (
                 <p>
                   Sigla: {partidos.sigla}  
                 </p>
-                <Link to={"/partidos/" + partidos.id}>
-                  <Button className="btn btn-success"> Detalhes</Button>       
-              </Link>
+            
                 </Box>    
               </Card.Body>
               

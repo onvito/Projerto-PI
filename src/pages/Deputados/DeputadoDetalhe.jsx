@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const DeputadoDetalhe = (props) => {
   
   const [dados, setDados] = useState({});
-  const [status, setStatus] = useState({})
+ 
 
   useEffect(() => {
     const id = props.match.params.id;
@@ -14,12 +14,14 @@ const DeputadoDetalhe = (props) => {
    
     apiGov.get(`/deputados/${id}`).then((resultado) => {
       setDados(resultado.data.dados);
+      
    });
   }, [props]);
 
   console.log(dados);
   return (
     <>
+       
       
        <>
           <Container>
@@ -39,7 +41,7 @@ const DeputadoDetalhe = (props) => {
                 <p>Data de Nascimento: {dados.dataNascimento}</p>
                 <p>Escolaridade: {dados.escolaridade}</p>
                 <p>Local de Nascimento: {dados.municipioNascimento}</p>
-                
+               
          
                 
               </Col>
@@ -53,7 +55,7 @@ const DeputadoDetalhe = (props) => {
           </Container>
           
         </>
-       
+        
       
     </>
   );
